@@ -118,8 +118,14 @@
       overflow-x: auto;
     }
 
-    .copy-btn {
-      width: 100%;
+    .prompt-actions {
+     display: flex;
+     gap: 10px;
+     margin-top: 16px;
+    }
+
+  .copy-btn {
+      flex: 1;
       padding: 10px;
       background: $gradient-accent;
       color: white;
@@ -129,9 +135,142 @@
       cursor: pointer;
       transition: all 0.3s ease;
 
-      &:hover {
-        box-shadow: 0 6px 16px rgba(139, 92, 246, 0.4);
-      }
+     &:hover {
+      box-shadow: 0 6px 16px rgba(139, 92, 246, 0.4);
     }
   }
+
+    .delete-btn {
+     background: rgba(220, 20, 60, 0.2); /* crimson */
+     color: #ff6b8a;
+     border: 1px solid rgba(220, 20, 60, 0.4);
+     padding: 10px;
+     border-radius: 12px;
+     font-weight: 600;
+     cursor: pointer;
+     transition: all 0.2s;
+
+     &:hover {
+       background: rgba(220, 20, 60, 0.3);
+    }
+   }
+  }
+}
+
+/* === Actions Bar === */
+.actions-bar {
+  margin: 24px 0 32px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.add-prompt-btn {
+  background: rgba(139, 92, 246, 0.2);
+  color: $accent-light;
+  border: 1px solid rgba(139, 92, 246, 0.4);
+  padding: 8px 16px;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  &:hover {
+    background: rgba(139, 92, 246, 0.3);
+  }
+}
+
+/* === Modal === */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.modal-content {
+  background: #1a1a2e;
+  border-radius: 20px;
+  padding: 32px;
+  width: 90%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+
+  h2 {
+    margin-bottom: 24px;
+    color: $text-primary;
+    font-size: 1.5rem;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      color: $text-secondary;
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      padding: 12px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: $text-primary;
+      font-family: 'Inter', sans-serif;
+
+      &:focus {
+        outline: none;
+        border-color: $accent;
+      }
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+  }
+
+  .form-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+    margin-top: 24px;
+  }
+
+  .btn-cancel {
+    background: rgba(255, 255, 255, 0.1);
+    color: $text-primary;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 10px 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    &:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+  }
+
+  .btn-submit {
+    @include btn-gradient;
+    padding: 10px 24px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+  }
+}
+
+/* No prompts */
+.no-prompts {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: $text-secondary;
+  font-style: italic;
 }
