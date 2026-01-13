@@ -1,10 +1,15 @@
 @import '../../styles/utils/variables';
 
+// Неоновые переменные
+$neon-purple: #8a2be2;
+$neon-glow: 0 0 16px rgba(138, 43, 226, 0.6);
+$dark-bg: linear-gradient(145deg, #0f0c29, #302b63, #24243e);
+
 .aura-ai {
-  background: linear-gradient(145deg, #f9f9ff, #f0f4ff);
+  background: $dark-bg;
   min-height: 100vh;
   font-family: 'Inter', sans-serif;
-  color: #1e1e2c;
+  color: #f0f0ff;
 
   .container {
     max-width: 1000px;
@@ -15,69 +20,109 @@
   /* Header */
   .aura-header {
     padding: 24px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
     .logo {
-      font-size: 1.6rem;
+      font-size: 1.8rem;
       font-weight: 800;
-      .logo-accent {
-        background: linear-gradient(135deg, #8b5cf6, #6366f1);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-      }
+      text-shadow: $neon-glow;
     }
+
     .back-btn {
-      background: #f0f0ff;
-      border: none;
+      background: rgba(138, 43, 226, 0.15);
+      border: 1px solid rgba(138, 43, 226, 0.4);
+      color: #d0b3ff;
       padding: 8px 16px;
       border-radius: 12px;
       cursor: pointer;
-      font-weight: 600;
-      transition: background 0.2s;
-      &:hover { background: #e0e0ff; }
+      transition: all 0.3s ease;
+      &:hover {
+        background: rgba(138, 43, 226, 0.25);
+        box-shadow: $neon-glow;
+      }
     }
   }
 
   /* Hero */
-  .hero {
-    padding: 80px 0 100px;
-    text-align: center;
+ .hero {
+   position: relative;
+   padding: 120px 0 100px;
+   text-align: center;
+   overflow: hidden;
 
-    h1 {
-      font-size: 3.2rem;
-      font-weight: 800;
-      margin-bottom: 20px;
-      .highlight {
-        background: linear-gradient(135deg, #8b5cf6, #6366f1);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-      }
-    }
+  /* Фоновое изображение */
+   background-image: url('/portfolio2026/portfolio-2026/public/images/AuraAi.jpg');
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
 
-    .subtitle {
-      font-size: 1.2rem;
-      color: #555;
-      max-width: 600px;
-      margin: 0 auto 32px;
-    }
+  /* Оверлей */
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 8, 25, 0.7); /* тёмный оверлей */
+    z-index: 1;
+  }
+
+
+  /* Контент поверх фона */
+  .container {
+    position: relative;
+    z-index: 2;
+  }
+
+  h1 {
+    font-size: 3.8rem;
+    font-weight: 800;
+    margin-bottom: 24px;
+    text-shadow: $neon-glow;
+    background: linear-gradient(90deg, #ffffff, #d0b3ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .subtitle {
+    font-size: 1.3rem;
+    color: #c0c0e0;
+    max-width: 680px;
+    margin: 0 auto 40px;
+    text-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+  }
 
     .cta-form {
       display: flex;
       gap: 12px;
-      max-width: 500px;
+      max-width: 520px;
       margin: 0 auto;
+      
       input {
         flex: 1;
         padding: 14px 20px;
-        border: 2px solid #e0e0ff;
+        border: 2px solid rgba(138, 43, 226, 0.3);
         border-radius: 14px;
+        background: rgba(0, 0, 0, 0.2);
+        color: white;
         font-size: 1rem;
         outline: none;
-        transition: border 0.3s;
-        &:focus { border-color: #8b5cf6; }
+        transition: all 0.3s;
+        &:focus {
+          border-color: $neon-purple;
+          box-shadow: 0 0 12px rgba(138, 43, 226, 0.5);
+        }
+        &::placeholder {
+          color: #606080;
+        }
       }
+
       button {
-        background: linear-gradient(135deg, #8b5cf6, #6366f1);
+        background: linear-gradient(135deg, $neon-purple, #6a0dad);
         color: white;
         border: none;
         padding: 14px 28px;
@@ -85,10 +130,10 @@
         font-weight: 700;
         cursor: pointer;
         transition: all 0.3s ease;
-        box-shadow: 0 4px 20px rgba(139, 92, 246, 0.3);
+        box-shadow: $neon-glow;
         &:hover {
           transform: translateY(-2px);
-          box-shadow: 0 6px 25px rgba(139, 92, 246, 0.4);
+          box-shadow: 0 0 20px rgba(138, 43, 226, 0.8);
         }
         &:disabled {
           opacity: 0.7;
@@ -99,62 +144,67 @@
 
     .success-message {
       margin-top: 16px;
-      color: #2e8b57;
+      color: #4ade80;
       font-weight: 600;
     }
   }
 
-  /* Features */
-  .features {
+  /* Services */
+  .services {
     padding: 80px 0;
-    background: white;
+    text-align: center;
 
     h2 {
-      text-align: center;
-      font-size: 2.2rem;
+      font-size: 2.4rem;
       margin-bottom: 50px;
-      color: #1e1e2c;
+      text-shadow: 0 0 10px rgba(208, 179, 255, 0.3);
     }
 
-    .features-grid {
+    .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 32px;
     }
 
-    .feature-card {
-      text-align: center;
+    .service-card {
+      background: rgba(30, 25, 60, 0.4);
       padding: 32px 24px;
       border-radius: 20px;
-      background: #fafbff;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: all 0.4s ease;
+      border: 1px solid rgba(138, 43, 226, 0.2);
+
       &:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        transform: translateY(-8px);
+        background: rgba(40, 35, 80, 0.6);
+        box-shadow: 0 10px 30px rgba(138, 43, 226, 0.2);
+        border-color: rgba(138, 43, 226, 0.4);
       }
 
-      .feature-icon {
-        display: inline-flex;
-        justify-content: center;
+      .service-icon {
+        width: 70px;
+        height: 70px;
+        margin: 0 auto 20px;
+        display: flex;
         align-items: center;
-        width: 60px;
-        height: 60px;
-        background: linear-gradient(135deg, #8b5cf6, #6366f1);
-        border-radius: 16px;
-        margin-bottom: 20px;
+        justify-content: center;
+        background: rgba(138, 43, 226, 0.15);
+        border-radius: 18px;
+        box-shadow: 0 0 12px rgba(138, 43, 226, 0.3);
         svg {
-          color: white;
+          color: #d0b3ff;
+          width: 32px;
+          height: 32px;
         }
       }
 
       h3 {
-        font-size: 1.25rem;
+        font-size: 1.3rem;
         margin-bottom: 12px;
-        color: #1e1e2c;
+        color: #f0f0ff;
       }
 
       p {
-        color: #666;
+        color: #a0a0c0;
         line-height: 1.6;
       }
     }
@@ -164,26 +214,36 @@
   .final-cta {
     padding: 100px 0 80px;
     text-align: center;
+
     h2 {
-      font-size: 2.4rem;
+      font-size: 2.6rem;
       margin-bottom: 32px;
-      color: #1e1e2c;
+      text-shadow: 0 0 12px rgba(208, 179, 255, 0.4);
     }
+
     .cta-button {
-      background: linear-gradient(135deg, #8b5cf6, #6366f1);
+      background: linear-gradient(135deg, $neon-purple, #6a0dad);
       color: white;
       border: none;
-      padding: 16px 40px;
-      border-radius: 16px;
-      font-size: 1.1rem;
+      padding: 18px 48px;
+      border-radius: 18px;
+      font-size: 1.2rem;
       font-weight: 700;
       cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 6px 25px rgba(139, 92, 246, 0.4);
+      transition: all 0.4s ease;
+      box-shadow: 0 0 20px rgba(138, 43, 226, 0.6);
+      animation: pulseGlow 2s infinite alternate;
+
       &:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 8px 30px rgba(139, 92, 246, 0.5);
+        transform: translateY(-4px);
+        box-shadow: 0 0 30px rgba(138, 43, 226, 0.9);
       }
     }
   }
+}
+
+/* Анимация пульсации */
+@keyframes pulseGlow {
+  from { box-shadow: 0 0 20px rgba(138, 43, 226, 0.6); }
+  to { box-shadow: 0 0 30px rgba(138, 43, 226, 0.9); }
 }

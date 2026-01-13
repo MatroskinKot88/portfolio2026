@@ -1,7 +1,12 @@
 // src/pages/AuraAi.jsx
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Sparkles, Layout, Zap, Eye } from 'lucide-react';
+import { 
+  Code, 
+  Share2, 
+  GitBranch, 
+  Palette 
+} from 'lucide-react';
 import '../styles/pages/_aura-ai.scss';
 
 export default function AuraAi() {
@@ -13,8 +18,6 @@ export default function AuraAi() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    // Здесь можно отправить email в Telegram через BotFarm
-    // Пока просто имитация
     setTimeout(() => {
       setIsSuccess(true);
       setIsSubmitting(false);
@@ -24,54 +27,50 @@ export default function AuraAi() {
 
   return (
     <div className="aura-ai">
-      {/* Header */}
       <header className="aura-header">
-        <div className="container">
-          <div className="logo">Aura<span className="logo-accent">AI</span></div>
-          <button className="back-btn" onClick={() => navigate('/')}>
-            ← Назад
-          </button>
-        </div>
+        <div className="logo">Aura<span style={{ color: '#d0b3ff' }}>AI</span></div>
+        <button className="back-btn" onClick={() => navigate('/')}>
+          ← Назад
+        </button>
       </header>
 
-      {/* Hero */}
-      <section className="hero">
-        <div className="container">
-          <div className="hero-content">
-            <h1>Design from <span className="highlight">text</span></h1>
-            <p className="subtitle">
-              Опишите интерфейс простым текстом — получите готовый макет в Figma за 10 секунд.
-            </p>
-            <form onSubmit={handleSubmit} className="cta-form">
-              <input
-                type="email"
-                placeholder="Ваш email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
-              <button type="submit" disabled={isSubmitting}>
-                {isSubmitting ? 'Отправка...' : 'Попробовать бесплатно'}
-              </button>
-            </form>
-            {isSuccess && <p className="success-message">Спасибо! Приглашение отправлено.</p>}
-          </div>
-        </div>
-      </section>
+ <section className="hero">
+  <div className="hero-overlay"></div>
+  <div className="container">
+    <h1>Design from Text</h1>
+    <p className="subtitle">
+      Опишите интерфейс простым текстом — получите готовый макет в Figma за 10 секунд.
+    </p>
+    <form onSubmit={handleSubmit} className="cta-form">
+      <input
+        type="email"
+        placeholder="Ваш email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        required
+      />
+      <button type="submit" disabled={isSubmitting}>
+        {isSubmitting ? 'Отправка...' : 'Попробовать бесплатно'}
+      </button>
+    </form>
+    {isSuccess && <p className="success-message">Спасибо! Приглашение отправлено.</p>}
+  </div>
+</section>
 
-      {/* Features */}
-      <section className="features">
+      <section className="services">
         <div className="container">
-          <h2>Как это работает</h2>
-          <div className="features-grid">
+          <h2>Возможности</h2>
+          <div className="services-grid">
             {[
-              { icon: <Layout size={28} />, title: 'Опишите', desc: 'Напишите, что хотите видеть на экране' },
-              { icon: <Sparkles size={28} />, title: 'Сгенерируйте', desc: 'AI создаст макет за секунды' },
-              { icon: <Zap size={28} />, title: 'Экспортируйте', desc: 'Получите ссылку на Figma' },
-              { icon: <Eye size={28} />, title: 'Итерируйте', desc: 'Правьте промт — обновляйте дизайн' }
+              { icon: <Palette size={32} />, title: 'UI Generation', desc: 'AI создаёт макет на основе текстового описания' },
+              { icon: <Code size={32} />, title: 'Code Export', desc: 'Экспорт в React, Vue или HTML/CSS' },
+              { icon: <Share2 size={32} />, title: 'Team Sharing', desc: 'Делитесь проектами с командой в один клик' },
+              { icon: <GitBranch size={32} />, title: 'Version History', desc: 'Откатывайтесь к любой версии дизайна' }
             ].map((item, i) => (
-              <div className="feature-card" key={i}>
-                <div className="feature-icon">{item.icon}</div>
+              <div className="service-card" key={i}>
+                <div className="service-icon">
+                  {item.icon}
+                </div>
                 <h3>{item.title}</h3>
                 <p>{item.desc}</p>
               </div>
@@ -80,11 +79,13 @@ export default function AuraAi() {
         </div>
       </section>
 
-      {/* CTA */}
       <section className="final-cta">
         <div className="container">
-          <h2>Готовы ускорить дизайн?</h2>
-          <button className="cta-button" onClick={() => document.querySelector('.cta-form').scrollIntoView({ behavior: 'smooth' })}>
+          <h2>Готовы создавать быстрее?</h2>
+          <button 
+            className="cta-button"
+            onClick={() => document.querySelector('.cta-form').scrollIntoView({ behavior: 'smooth' })}
+          >
             Начать сейчас
           </button>
         </div>
