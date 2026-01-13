@@ -1,0 +1,90 @@
+@import '../../styles/utils/variables';
+@import '../../styles/utils/mixins';
+
+.project-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  padding: 24px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  cursor: default;
+
+  /* Эффект при наведении — как у skill-category */
+  &:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 12px 30px rgba(139, 92, 246, 0.25);
+    background: rgba(255, 255, 255, 0.08);
+
+    /* Градиентная рамка */
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-radius: 20px;
+      padding: 2px;
+      background: linear-gradient(135deg, #8b5cf6, #6366f1);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: destination-out;
+      mask-composite: exclude;
+      z-index: -1;
+    }
+  }
+
+  h3 {
+    font-size: 1.4rem;
+    margin-bottom: 12px;
+    background: linear-gradient(135deg, #f0f0ff, #c0c0ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
+  }
+
+  p {
+    color: $text-secondary;
+    margin-bottom: 20px;
+    flex-grow: 1;
+    line-height: 1.6;
+  }
+
+  .project-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: auto;
+  }
+
+  .btn-live {
+    @include btn-gradient;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    font-size: 0.95rem;
+    padding: 10px 20px;
+  }
+
+  .btn-code {
+    background: rgba(255, 255, 255, 0.1);
+    color: $text-primary;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 10px 20px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: inline-block;
+    text-align: center;
+    font-size: 0.95rem;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.2);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+  }
+}

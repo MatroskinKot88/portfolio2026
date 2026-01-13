@@ -1,0 +1,20 @@
+// Цвета
+$dark-bg: #0a0a14;
+$light-bg: #ffffff;
+$card-bg: rgba(255, 255, 255, 0.08);
+$text-primary: #f0f0ff;
+$text-secondary: #a0a0c0;
+$accent: #8b5cf6; // violet-500
+$accent-light: #a78bfa;
+
+// Градиенты
+$gradient-accent: linear-gradient(135deg, $accent, #6366f1); // violet → indigo
+$gradient-glass: linear-gradient(145deg, rgba(255,255,255,0.1), rgba(255,255,255,0.02));
+
+// Шрифты
+$font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+// Breakpoints
+$bp-sm: 640px;
+$bp-md: 768px;
+$bp-lg: 1024px;

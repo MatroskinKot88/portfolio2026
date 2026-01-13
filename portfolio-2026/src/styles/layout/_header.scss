@@ -1,0 +1,36 @@
+@import '../../styles/utils/variables';
+
+.header {
+  padding: 24px 0;
+  margin-bottom: 40px;
+
+  .header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 24px;
+  }
+
+  .logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #f0f0ff, #c0c0ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .header-links a {
+    color: $text-secondary;
+    text-decoration: none;
+    margin-left: 24px;
+    font-weight: 500;
+    transition: color 0.2s;
+
+    &:hover {
+      color: $accent-light;
+    }
+  }
+}

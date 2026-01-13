@@ -1,0 +1,241 @@
+@import '../../styles/utils/variables';
+@import '../../styles/utils/mixins';
+
+.home {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px 60px;
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  margin-bottom: 60px;
+  padding-top: 20px;
+
+  h1 {
+    font-size: 2.8rem;
+    margin-bottom: 16px;
+    background: linear-gradient(135deg, #f0f0ff, #c0c0ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .role {
+    font-size: 1.3rem;
+    color: $accent-light;
+    margin-bottom: 20px;
+    font-weight: 500;
+  }
+
+  .about {
+    color: $text-secondary;
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+}
+
+/* Skills */
+.skills {
+  margin-bottom: 70px;
+
+  h2 {
+    text-align: center;
+    font-size: 2.2rem;
+    margin-bottom: 40px;
+  }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 32px;
+    padding: 0 16px;
+  }
+
+  .skill-category {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 18px;
+    padding: 28px;
+    transition: all 0.4s ease;
+    cursor: default;
+    position: relative;
+    overflow: hidden;
+
+    /* Эффект при наведении */
+    &:hover {
+      transform: translateY(-6px) scale(1.02);
+      box-shadow: 0 12px 30px rgba(139, 92, 246, 0.25); // violet-500 с прозрачностью
+      background: rgba(255, 255, 255, 0.08);
+
+      /* Добавим градиентную рамку через псевдоэлемент */
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-radius: 18px;
+        padding: 2px;
+        background: linear-gradient(135deg, #8b5cf6, #6366f1);
+        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        -webkit-mask-composite: destination-out;
+        mask-composite: exclude;
+        z-index: -1;
+      }
+    }
+
+    h3 {
+      font-size: 1.4rem;
+      margin-bottom: 18px;
+      background: linear-gradient(135deg, #f0f0ff, #c0c0ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 700;
+    }
+
+    ul {
+      list-style: none;
+      color: $text-secondary;
+      li {
+        padding: 6px 0;
+        position: relative;
+        padding-left: 20px;
+        &:before {
+          content: "•";
+          color: $accent;
+          position: absolute;
+          left: 0;
+        }
+      }
+    }
+  }
+}
+
+/* Projects */
+.projects {
+  h2 {
+    text-align: center;
+    font-size: 2.2rem;
+    margin-bottom: 32px;
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 28px;
+  }
+}
+
+/* === Avatar & Modal === */
+.avatar-container {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto 24px;
+  position: relative;
+  cursor: pointer;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  .avatar {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .avatar-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 50%;
+  }
+
+  &:hover .avatar-overlay {
+    opacity: 1;
+  }
+
+  .zoom-icon {
+    color: white;
+    font-size: 1.4rem;
+    text-shadow: 0 0 8px rgba(0, 0, 0, 0.7);
+  }
+}
+
+/* Modal */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  outline: none;
+}
+
+.modal-content {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+}
+
+.modal-image {
+  max-width: 100%;
+  max-height: 90vh;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+}
+
+.modal-close {
+  position: absolute;
+  top: -40px;
+  right: 0;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 2.5rem;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+/* === Анимации появления === */
+.hero,
+.skills,
+.projects {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.hero.animate,
+.skills.animate,
+.projects.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
