@@ -90,27 +90,36 @@ export default function Home() {
       >
         <h2>Проекты</h2>
         <div className="projects-grid">
-          <ProjectCard
-            title="BarCraft Pro"
-            description="Лендинг для производства барных станций из пищевой нержавейки."
-            liveUrl="https://barcraftstation2.vercel.app"
-            codeUrl="https://github.com/MatroskinKot88/barCraftStation"
-          />
-          <ProjectCard
-            title="Prompt Lab"
-            description="Интерактивная галерея эффективных промтов."
-            liveUrl="#"
-          />
-          <ProjectCard
-            title="Aura AI"
-            description="Концепт SaaS: генерация UI по тексту."
-            liveUrl="#"
-          />
-          <ProjectCard
-            title="Nocturne Bar"
-            description="Дизайн-концепт коктейльного бара."
-            liveUrl="#"
-          />
+          {/* Внутренние проекты */}
+            <ProjectCard
+              title="Prompt Lab"
+              description="Интерактивная галерея эффективных промтов."
+              liveUrl="/prompt-lab"
+              isExternal={false}
+            />
+
+            <ProjectCard
+              title="Aura AI"
+              description="Концепт SaaS: генерация UI по тексту."
+              liveUrl="/aura-ai"
+              isExternal={false}
+            />
+
+            <ProjectCard
+              title="Nocturne Bar"
+              description="Дизайн-концепт коктейльного бара."
+              liveUrl="/nocturne"
+              isExternal={false}
+            />
+
+            {/* Внешний проект */}
+            <ProjectCard
+              title="BarCraft Pro"
+              description="Лендинг для производства барных станций из пищевой нержавейки."
+              liveUrl="https://barcraftstation2.vercel.app"
+              codeUrl="https://github.com/MatroskinKot88/barCraftStation"
+              isExternal={true} // можно не указывать — по умолчанию true
+            />
         </div>
       </section>
 
